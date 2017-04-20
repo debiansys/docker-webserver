@@ -100,9 +100,8 @@ RUN chmod 755 /start.sh && \
 
 ##################  CONFIGURATION ENDS  ##################
 
-EXPOSE 443 80 8765
+EXPOSE 443 80
 
 WORKDIR /var/www
 
-CMD ["/start.sh"]
-####ENTRYPOINT ["start.sh"]
+ENTRYPOINT ["/start.sh"]
