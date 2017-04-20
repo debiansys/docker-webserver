@@ -1,6 +1,5 @@
-#!/bin/sh
-set -e
-echo "DebianSYS WebServer"
+#!/bin/bash
+
 # ------------------------------------------
 # Set Custom Webroot
 # ------------------------------------------
@@ -18,7 +17,6 @@ fi
 
 if [ ! -z "$COMPOSER_DIRECTORY" ] ; then
     cd $COMPOSER_DIRECTORY
-    chmod -R 777 ./storage ./bootstrap/cache
     composer update && composer dump-autoload -o
 fi
 
@@ -33,15 +31,6 @@ if [[ "$LARAVEL" == "1" ]] ; then
     if [[ "$RUN_MIGRATIONS" == "1" ]] ; then
         php artisan migrate
     fi
-fi
-
-# ------------------------------------------
-# Laravel Queue Start
-# ------------------------------------------
-
-if [[ "$START_QUEUE" == "1" ]] ; then
-    cd $webroot
-    php artisan queue:work
 fi
 
 # ------------------------------------------
