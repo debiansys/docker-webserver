@@ -32,6 +32,10 @@ if [[ "$LARAVEL" == "1" ]] ; then
     if [[ "$RUN_MIGRATIONS" == "1" ]] ; then
         php artisan migrate
     fi
+
+    if [[ "$START_QUEUE" == "1" ]] ; then
+        php artisan queue:work
+    fi
 fi
 
 # ------------------------------------------
