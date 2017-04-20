@@ -100,7 +100,7 @@ RUN chmod 755 /start.sh && \
 
 ##################  CONFIGURATION ENDS  ##################
 
-EXPOSE 443 80
+EXPOSE 443 80 8765
 
 WORKDIR /var/www
 

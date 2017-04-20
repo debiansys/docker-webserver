@@ -19,6 +19,7 @@ fi
 if [ ! -z "$COMPOSER_DIRECTORY" ] ; then
     cd $COMPOSER_DIRECTORY
     composer update && composer dump-autoload -o
+    chmod -R 777 ./storage ./bootstrap/cache
 fi
 
 # ------------------------------------------
