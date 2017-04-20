@@ -104,4 +104,5 @@ EXPOSE 443 80
 
 WORKDIR /var/www
 
-CMD ["/start.sh"]
+#####CMD ["/start.sh"]
+ENTRYPOINT ["start.sh"]
