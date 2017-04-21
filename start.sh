@@ -34,17 +34,6 @@ if [[ "$LARAVEL" == "1" ]] ; then
 fi
 
 # ------------------------------------------
-# Laravel Queue
-# ------------------------------------------
-
-if [[ "$LARAVEL_QUEUE" == "1" ]] ; then
-    supervisorfile=supervisord_queue.conf
-    sed -i "s#/var/www/#$webroot#g" $supervisorfile
-else
-    supervisorfile=supervisord.conf
-fi
-
-# ------------------------------------------
 # Display PHP error's or not
 # ------------------------------------------
 
@@ -100,4 +89,4 @@ sed -i "s/;pm.max_requests = 200/pm.max_requests = 0/g" /etc/php7/php-fpm.d/www.
 # Start supervisord and services
 # ------------------------------------------
 
-exec /usr/bin/supervisord -n -c $supervisorfile
+exec /usr/bin/supervisord -n -c /etc/supervisord.conf
