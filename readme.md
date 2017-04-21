@@ -15,6 +15,7 @@ Here are some configurable environment values.
 * `PHP_MEMORY_LIMIT` - PHP memory limit in megabytes. Example: `100`
 * `PHP_POST_MAX_SIZE` - PHP POST maximum size in megabytes. Example: `50`
 * `PHP_UPLOAD_MAX_FILESIZE` - PHP upload maximum file size in megabytes. Example: `100`
+* `PHP_MAX_EXECUTION_TIME` - PHP maximum execution time in seconds. Example: `30`
 * `COMPOSER_DIRECTORY` - Path to where your  `composer.json` file lives. Example: `/var/www`
 * `LARAVEL` - Is this a Laravel application. If you set this to `1` then set your composer directory too. Default `0`
 * `RUN_MIGRATIONS` - Run Laravel migrations. (Will only work IF LARAVEL = 1). Default: `0`
