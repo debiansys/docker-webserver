@@ -74,7 +74,7 @@ fi
 # ------------------------------------------
 
 if [ ! -z "$PHP_MAX_EXECUTION_TIME" ]; then
-    sed -i "s/max_execution_time = 30/max_execution_time = ${PHP_MAX_EXECUTION_TIME}M/g" /etc/php7/conf.d/php.ini
+    sed -i "s/max_execution_time = 30/max_execution_time = ${PHP_MAX_EXECUTION_TIME}/g" /etc/php7/conf.d/php.ini
 fi
 
 sed -i "s/pm.max_children = 5/pm.max_children = 70/g" /etc/php7/php-fpm.d/www.conf
