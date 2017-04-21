@@ -68,6 +68,7 @@ RUN wget -O /etc/apk/keys/diego@hernandev.com-58b4c2e0.rsa.pub \
 
 ADD start.sh /start.sh
 ADD conf/supervisord.conf /etc/supervisord.conf
+ADD conf/supervisord_queue.conf /etc/supervisord_queue.conf
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 
