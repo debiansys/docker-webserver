@@ -101,7 +101,7 @@ RUN chmod 755 /start.sh && \
     find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
 RUN curl -sS -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x /usr/local/bin/wp \
+    chmod +x /usr/local/bin/wp \;
 
 ##################  CONFIGURATION ENDS  ##################
 
