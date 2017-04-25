@@ -16,6 +16,8 @@ RUN wget -O /etc/apk/keys/diego@hernandev.com-58b4c2e0.rsa.pub \
     supervisor \
     curl \
     git \
+    unzip \
+    unrar \
     php7-fpm \
     php7-pdo \
     php7-pdo_mysql \
@@ -61,6 +63,8 @@ RUN wget -O /etc/apk/keys/diego@hernandev.com-58b4c2e0.rsa.pub \
     php7 composer-setup.php --install-dir=/usr/bin --filename=composer && \
     php7 -r "unlink('composer-setup.php');" && \
     ln -s /usr/bin/php7 /usr/bin/php
+    curl -sS -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x /usr/local/bin/wp
 
 ##################  INSTALLATION ENDS  ##################
 

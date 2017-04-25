@@ -11,27 +11,6 @@ else
     webroot=/var/www
 fi
 
-# ------------------------------------------
-# Composer
-# ------------------------------------------
-
-if [ ! -z "$COMPOSER_DIRECTORY" ] ; then
-    cd $COMPOSER_DIRECTORY
-    composer update && composer dump-autoload -o
-fi
-
-# ------------------------------------------
-# Laravel Specific
-# ------------------------------------------
-
-if [[ "$LARAVEL" == "1" ]] ; then
-    cd $webroot
-    php artisan key:generate
-
-    if [[ "$RUN_MIGRATIONS" == "1" ]] ; then
-        php artisan migrate
-    fi
-fi
 
 # ------------------------------------------
 # Display PHP error's or not
