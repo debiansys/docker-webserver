@@ -8,7 +8,7 @@ ENV composer_hash 669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190
 ################## INSTALLATION STARTS ##################
 
 RUN wget -O /etc/apk/keys/diego@hernandev.com-58b4c2e0.rsa.pub \
-    http://php.codecasts.rocks/php-alpine.pub && \
+    http://php.codecasts.rocks/php-alpine.rsa.pub && \
     echo "http://php.codecasts.rocks/7.1" >> /etc/apk/repositories && \
     apk add --update php7 php7-mbstring \
     openssh-client \
