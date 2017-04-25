@@ -61,6 +61,7 @@ sed -i "s/pm.start_servers = 3/pm.start_servers = 20/g" /etc/php7/php-fpm.d/www.
 sed -i "s/pm.min_spare_servers = 2/pm.min_spare_servers = 20/g" /etc/php7/php-fpm.d/www.conf
 sed -i "s/pm.max_spare_servers = 4/pm.max_spare_servers = 35/g" /etc/php7/php-fpm.d/www.conf
 sed -i "s/;pm.max_requests = 200/pm.max_requests = 0/g" /etc/php7/php-fpm.d/www.conf
+chown -R nginx:nginx $webroot
 
 
 # /etc/php7/php-fpm.d/www.conf
