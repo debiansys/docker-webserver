@@ -63,8 +63,6 @@ RUN wget -O /etc/apk/keys/diego@hernandev.com-58b4c2e0.rsa.pub \
     php7 composer-setup.php --install-dir=/usr/bin --filename=composer && \
     php7 -r "unlink('composer-setup.php');" && \
     ln -s /usr/bin/php7 /usr/bin/php
-    curl -sS -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x /usr/local/bin/wp
 
 ##################  INSTALLATION ENDS  ##################
 
@@ -101,6 +99,8 @@ RUN chmod 755 /start.sh && \
         ${fpm_conf} && \
     ln -s /etc/php7/php.ini /etc/php7/conf.d/php.ini && \
     find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+    curl -sS -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x /usr/local/bin/wp
 
 ##################  CONFIGURATION ENDS  ##################
 
