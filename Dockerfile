@@ -1,15 +1,15 @@
 FROM yobasystems/alpine-nginx:latest
 MAINTAINER DebianSYS <info@debiansys.com>
 
-ENV php_conf /etc/php7/php.ini
-ENV fpm_conf /etc/php7/php-fpm.d/www.conf
+ENV php_conf /etc/php/7.1/php.ini
+ENV fpm_conf /etc/php/7.1/php-fpm.d/www.conf
 ENV composer_hash 669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410
 
 ################## INSTALLATION STARTS ##################
 
-RUN wget -O /etc/apk/keys/php-alpine.rsa.pub \
-    http://php.codecasts.rocks/php-alpine.rsa.pub && \
-    echo "http://php.codecasts.rocks/7.1" >> /etc/apk/repositories && \
+RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
+    https://repos.php.earth/alpine/phpearth.rsa.pub && \
+    echo "https://repos.php.earth/alpine" >> /etc/apk/repositories && \
     apk add --update php7 php7-mbstring \
     openssh-client \
     nginx \
@@ -57,11 +57,10 @@ RUN wget -O /etc/apk/keys/php-alpine.rsa.pub \
     mkdir -p /var/log/supervisor && \
     rm -Rf /var/www/* && \
     rm -Rf /etc/nginx/nginx.conf && \
-    php7 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php7 -r "if (hash_file('SHA384', 'composer-setup.php') === '${composer_hash}') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
-    php7 composer-setup.php --install-dir=/usr/bin --filename=composer && \
-    php7 -r "unlink('composer-setup.php');" && \
-    ln -s /usr/bin/php7 /usr/bin/php
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php -r "if (hash_file('SHA384', 'composer-setup.php') === '${composer_hash}') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
+    php composer-setup.php --install-dir=/usr/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');"
 
 ##################  INSTALLATION ENDS  ##################
 
@@ -91,8 +90,8 @@ RUN chmod 755 /start.sh && \
         -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} && \
-    ln -s /etc/php7/php.ini /etc/php7/conf.d/php.ini && \
-    find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+    ln -s /etc/php/7.1/php.ini /etc/php/7.1/conf.d/php.ini && \
+    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
 ##################  CONFIGURATION ENDS  ##################
 
