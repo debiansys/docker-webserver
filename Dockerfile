@@ -48,6 +48,7 @@ RUN wget -O /etc/apk/keys/php-alpine.rsa.pub \
     php7-xmlreader \
     php7-opcache \
     php7-imagick \
+    htop \
     dialog &&\
     mkdir -p /etc/nginx && \
     mkdir -p /run/nginx && \
