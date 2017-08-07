@@ -48,6 +48,10 @@ RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
     php7-xmlreader \
     php7-opcache \
     php7-imagick \
+    php7-tokenizer \
+    php7.1-fileinfo \
+    php7.1-xmlwriter \
+    nano \
     htop \
     dialog &&\
     mkdir -p /etc/nginx && \
@@ -60,7 +64,8 @@ RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php -r "if (hash_file('SHA384', 'composer-setup.php') === '${composer_hash}') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
     php composer-setup.php --install-dir=/usr/bin --filename=composer && \
-    php -r "unlink('composer-setup.php');"
+    php -r "unlink('composer-setup.php');" && \
+    composer global require hirak/prestissimo
 
 ##################  INSTALLATION ENDS  ##################
 
@@ -91,7 +96,8 @@ RUN chmod 755 /start.sh && \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} && \
     ln -s /etc/php/7.1/php.ini /etc/php/7.1/conf.d/php.ini && \
-    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \; && \
+    ln -s /run/php/php-fpm7.1.sock /var/run/php-fpm.sock
 
 ##################  CONFIGURATION ENDS  ##################
 

@@ -85,6 +85,12 @@ sed -i "s/;pm.max_requests = 200/pm.max_requests = 0/g" /etc/php/7.1/php-fpm.d/w
 chown -R nginx:nginx $webroot
 
 
+if [ ! -z "$WEBROOT/storage" ]; then
+    webroot=$WEBROOT
+    chmod -R 777 $webroot/storage
+fi
+
+
 # /etc/php/7.1/php-fpm.d/www.conf
 # CHANGE PHP SETTINGS FOR
 # pm.max_children = 70
