@@ -90,6 +90,11 @@ if [ ! -z "$WEBROOT/storage" ]; then
     chmod -R 777 $webroot/storage
 fi
 
+if [ ! -z "$WEBROOT/bootstrap/cache" ]; then
+    webroot=$WEBROOT
+    chmod -R 777 $webroot/bootstrap/cache
+fi
+
 
 # /etc/php/7.1/php-fpm.d/www.conf
 # CHANGE PHP SETTINGS FOR
