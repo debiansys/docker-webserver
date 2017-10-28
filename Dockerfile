@@ -51,6 +51,7 @@ RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
     php7-tokenizer \
     php7.1-fileinfo \
     php7.1-xmlwriter \
+    php7.1-simplexml \
     nano \
     htop \
     dialog &&\
