@@ -84,6 +84,7 @@ RUN chmod 755 /start.sh && \
         -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 100M/g" \
         -e "s/post_max_size\s*=\s*8M/post_max_size = 100M/g" \
         -e "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" \
+        -e "s/short_open_tag = \"Off\"/short_open_tag = \"On\"/g" \
         ${php_conf} && \
     sed -i \
         -e "s/;daemonize\s*=\s*yes/daemonize = no/g" \
