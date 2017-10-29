@@ -75,6 +75,7 @@ RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
 ADD start.sh /start.sh
 ADD conf/supervisord.conf /etc/supervisord.conf
 ADD conf/nginx.conf /etc/nginx/nginx.conf
+ADD conf/fastcgi.conf /etc/nginx/fastcgi.conf
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 
 RUN chmod 755 /start.sh && \
