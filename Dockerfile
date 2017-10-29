@@ -1,8 +1,8 @@
 FROM yobasystems/alpine-nginx:latest
 MAINTAINER DebianSYS <info@debiansys.com>
 
-ENV php_conf /etc/php7.1/php.ini
-ENV fpm_conf /etc/php7.1/php-fpm.d/www.conf
+ENV php_conf /etc/php/7.1/php.ini
+ENV fpm_conf /etc/php/7.1/php-fpm.d/www.conf
 ENV composer_hash 544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061
 
 ################## INSTALLATION STARTS ##################
@@ -96,8 +96,8 @@ RUN chmod 755 /start.sh && \
         -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} && \
-    ln -s /etc/php7.1/php.ini /etc/php7.1/conf.d/php.ini && \
-    find /etc/php7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} && \
+    ln -s /etc/php/7.1/php.ini /etc/php/7.1/conf.d/php.ini && \
+    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} && \
     ln -s /run/php/php-fpm7.1.sock /var/run/php-fpm.sock \;
 
 ##################  CONFIGURATION ENDS  ##################
