@@ -93,12 +93,11 @@ RUN chmod 755 /start.sh && \
         -e "s/;listen.mode = 0660/listen.mode = 0666/g" \
         -e "s/;listen.owner = nobody/listen.owner = nginx/g" \
         -e "s/;listen.group = nobody/listen.group = nginx/g" \
-        -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
+        -e "s/listen = 127.0.0.1:9000/listen = \/run\/php-fpm.sock/g" \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} && \
     ln -s /etc/php/7.1/php.ini /etc/php/7.1/conf.d/php.ini && \
-    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \; && \
-    ln -s /run/php/php-fpm.sock /var/run/php-fpm.sock
+    find /etc/php/7.1/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
 ##################  CONFIGURATION ENDS  ##################
 
