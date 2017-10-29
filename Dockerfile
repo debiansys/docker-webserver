@@ -7,9 +7,9 @@ ENV composer_hash 544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd5864
 
 ################## INSTALLATION STARTS ##################
 
-RUN wget -O /etc/apk/keys/php-alpine.rsa.pub \
-    http://php.codecasts.rocks/php-alpine.rsa.pub && \
-    echo "http://php.codecasts.rocks/7.1" >> /etc/apk/repositories && \
+RUN wget -O /etc/apk/keys/phpearth.rsa.pub \
+    https://repos.php.earth/alpine/phpearth.rsa.pub && \
+    echo "https://repos.php.earth/alpine" >> /etc/apk/repositories && \
     apk add --update php7 php7-mbstring \
     openssh-client \
     nginx \
