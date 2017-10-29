@@ -97,7 +97,7 @@ RUN chmod 755 /start.sh && \
         -e "s/^;clear_env = no$/clear_env = no/" \
         ${fpm_conf} && \
     ln -s /etc/php7/php.ini /etc/php7/conf.d/php.ini && \
-    find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \
+    find /etc/php7/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} && \
     ln -s /run/php/php-fpm7.1.sock /var/run/php-fpm.sock \;
 
 ##################  CONFIGURATION ENDS  ##################
